@@ -4,10 +4,21 @@ import { Container } from "@/components/Container";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ReferenceCard } from "@/components/ReferenceCard";
+import { LogoWall } from "@/components/LogoWall";
 import { CTASection } from "@/components/CTASection";
 import { AnimatedReveal } from "@/components/AnimatedReveal";
 import { buildMetadata } from "@/lib/seo";
 import { references, sectors, testimonials } from "@/lib/site-data";
+import { images } from "@/lib/images";
+
+const referenceVisuals = [
+  images.audit,
+  images.imaging,
+  images.equipmentClose,
+  images.surgery,
+  images.monitor,
+  images.laboratory,
+];
 
 export const metadata: Metadata = buildMetadata({
   title: "Références et missions",
@@ -24,6 +35,8 @@ export default function ReferencesPage() {
         title="Des missions concrètes, anonymisées par respect du secret professionnel."
         description="Nous communiquons les références détaillées, les noms d'établissements et les retours clients dans le cadre de réponses à appels d'offres ou d'échanges directs avec les directions générales."
         crumbs={[{ label: "Accueil", href: "/" }, { label: "Références" }]}
+        image={images.imaging.src}
+        imageAlt={images.imaging.alt}
       />
 
       <section>
@@ -34,11 +47,14 @@ export default function ReferencesPage() {
             description="Chaque mission est préparée et restituée selon notre méthode standard, avec un livrable structuré et exploitable par la direction."
           />
           <div className="mt-14 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {references.map((r, i) => (
-              <AnimatedReveal key={r.type} delay={(i % 3) * 0.05}>
-                <ReferenceCard reference={r} />
-              </AnimatedReveal>
-            ))}
+            {references.map((r, i) => {
+              const visual = referenceVisuals[i % referenceVisuals.length];
+              return (
+                <AnimatedReveal key={r.type} delay={(i % 3) * 0.05}>
+                  <ReferenceCard reference={r} image={visual.src} imageAlt={visual.alt} />
+                </AnimatedReveal>
+              );
+            })}
           </div>
         </Container>
       </section>
@@ -98,6 +114,8 @@ export default function ReferencesPage() {
           </div>
         </Container>
       </section>
+
+      <LogoWall />
 
       <CTASection
         eyebrow="Échanger en confiance"

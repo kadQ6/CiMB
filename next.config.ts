@@ -8,11 +8,15 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: path.resolve(import.meta.dirname),
   },
+  allowedDevOrigins: ["10.16.46.108", "localhost", "127.0.0.1"],
   experimental: {
     optimizePackageImports: ["lucide-react", "framer-motion"],
   },
   images: {
     formats: ["image/avif", "image/webp"],
+    remotePatterns: [
+      { protocol: "https", hostname: "images.unsplash.com" },
+    ],
   },
 };
 

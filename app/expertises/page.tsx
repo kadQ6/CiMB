@@ -7,6 +7,7 @@ import { AnimatedReveal } from "@/components/AnimatedReveal";
 import { ButtonLink } from "@/components/Button";
 import { buildMetadata } from "@/lib/seo";
 import { expertises } from "@/lib/site-data";
+import { images } from "@/lib/images";
 
 export const metadata: Metadata = buildMetadata({
   title: "Expertises biomédicales",
@@ -23,6 +24,8 @@ export default function ExpertisesPage() {
         title="Neuf domaines d'intervention pour fiabiliser votre parc biomédical."
         description="Chaque expertise CiMB est mobilisable seule ou dans une mission combinée. Le périmètre est cadré avec votre direction technique avant le démarrage."
         crumbs={[{ label: "Accueil", href: "/" }, { label: "Expertises" }]}
+        image={images.techField.src}
+        imageAlt={images.techField.alt}
       />
 
       <section>

@@ -7,6 +7,7 @@ import { CTASection } from "@/components/CTASection";
 import { AnimatedReveal } from "@/components/AnimatedReveal";
 import { buildMetadata } from "@/lib/seo";
 import { offers } from "@/lib/site-data";
+import { images } from "@/lib/images";
 
 export const metadata: Metadata = buildMetadata({
   title: "Offres et contrats",
@@ -37,6 +38,8 @@ export default function OffresPage() {
         title="Trois formats d'engagement, un seul niveau d'exigence."
         description="Du diagnostic ponctuel au contrat pluriannuel : choisissez l'intensité d'accompagnement qui correspond à la maturité technique et au programme d'investissement de votre établissement."
         crumbs={[{ label: "Accueil", href: "/" }, { label: "Offres & contrats" }]}
+        image={images.monitor.src}
+        imageAlt={images.monitor.alt}
       />
 
       <section>

@@ -6,6 +6,7 @@ import { ContactForm } from "@/components/ContactForm";
 import { AnimatedReveal } from "@/components/AnimatedReveal";
 import { buildMetadata } from "@/lib/seo";
 import { site } from "@/lib/site-data";
+import { images } from "@/lib/images";
 
 export const metadata: Metadata = buildMetadata({
   title: "Contact",
@@ -22,6 +23,8 @@ export default function ContactPage() {
         title="Échangeons sur votre besoin biomédical."
         description="Un ingénieur CiMB revient vers vous sous 48 heures ouvrées. Plus votre demande est précise, plus la première proposition sera pertinente."
         crumbs={[{ label: "Accueil", href: "/" }, { label: "Contact" }]}
+        image={images.djiboutiCity.src}
+        imageAlt={images.djiboutiCity.alt}
       />
 
       <section>

@@ -8,9 +8,14 @@ import { MethodTimeline } from "@/components/MethodTimeline";
 import { ReferenceCard } from "@/components/ReferenceCard";
 import { ClientPortalPreview } from "@/components/ClientPortalPreview";
 import { CTASection } from "@/components/CTASection";
+import { ImageFeature } from "@/components/ImageFeature";
+import { LogoWall } from "@/components/LogoWall";
 import { AnimatedReveal } from "@/components/AnimatedReveal";
 import { ButtonLink } from "@/components/Button";
 import { references, sectors, serviceModels, whyCimb } from "@/lib/site-data";
+import { images } from "@/lib/images";
+
+const referenceImages = [images.audit.src, images.imaging.src, images.laboratory.src];
 
 export default function HomePage() {
   return (
@@ -50,8 +55,44 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* Modèles de service */}
+      {/* Image feature 1 — Sur le terrain */}
       <section className="relative bg-[color:var(--color-soft)]">
+        <Container className="py-24 md:py-32">
+          <ImageFeature
+            eyebrow="Sur le terrain"
+            title="Une présence terrain qui transforme l'état du parc en plan d'action."
+            description={
+              <>
+                <p>
+                  Nos équipes interviennent directement dans les services hospitaliers : bloc
+                  opératoire, imagerie, soins critiques, dialyse, laboratoire. Chaque visite est
+                  documentée, chaque équipement reçoit une fiche technique normalisée et une
+                  classification de criticité.
+                </p>
+                <p>
+                  Vous obtenez une cartographie objective et exploitable, et un plan d'action
+                  priorisé adapté à votre programme d'investissement.
+                </p>
+              </>
+            }
+            image={images.audit.src}
+            imageAlt={images.audit.alt}
+            stats={[
+              { value: "120+", label: "Audits conduits" },
+              { value: "3 200", label: "Équipements suivis" },
+              { value: "98 %", label: "Disponibilité moyenne" },
+            ]}
+          >
+            <ButtonLink href="/methode" variant="ghost" size="md">
+              Voir la méthode
+              <ArrowRight className="h-4 w-4" />
+            </ButtonLink>
+          </ImageFeature>
+        </Container>
+      </section>
+
+      {/* Modèles de service */}
+      <section className="relative">
         <Container className="py-24 md:py-28">
           <SectionHeading
             eyebrow="Nos modèles de service"
@@ -73,53 +114,50 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* Pourquoi CiMB */}
-      <section className="relative">
+      {/* Image feature 2 — Pourquoi CiMB */}
+      <section className="relative bg-[color:var(--color-soft)]">
         <Container className="py-24 md:py-32">
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
-            <div className="lg:col-span-5">
-              <SectionHeading
-                eyebrow="Pourquoi CiMB"
-                title="Une exigence d'ingénieur. Un sens du terrain."
-                description="Nous ne livrons pas des recommandations théoriques. Chaque mission s'achève par un parc plus fiable, des décisions argumentées et une traçabilité opposable aux audits internes et aux bailleurs."
-              >
-                <div className="mt-8">
-                  <ButtonLink href="/methode" variant="ghost" size="md">
-                    Voir notre méthode
-                    <ArrowRight className="h-4 w-4" />
-                  </ButtonLink>
-                </div>
-              </SectionHeading>
-            </div>
-
-            <div className="lg:col-span-7">
-              <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                {whyCimb.map((w, i) => (
-                  <AnimatedReveal key={w.title} delay={i * 0.04}>
-                    <li className="group h-full rounded-2xl border border-[color:var(--color-line)] bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-soft)]">
-                      <span
-                        aria-hidden
-                        className="grid h-10 w-10 place-items-center rounded-xl bg-[color:var(--color-soft)] text-[color:var(--color-ink)] transition-colors group-hover:bg-[color:var(--color-ink)] group-hover:text-white"
-                      >
-                        <w.icon className="h-4 w-4" />
-                      </span>
-                      <h3 className="mt-5 text-base font-semibold text-[color:var(--color-ink)]">
-                        {w.title}
-                      </h3>
-                      <p className="mt-2 text-[14px] leading-relaxed text-[color:var(--color-muted-strong)]">
-                        {w.description}
-                      </p>
-                    </li>
-                  </AnimatedReveal>
-                ))}
-              </ul>
-            </div>
-          </div>
+          <ImageFeature
+            eyebrow="Pourquoi CiMB"
+            title="Une exigence d'ingénieur. Un sens du terrain."
+            reverse
+            image={images.equipmentClose.src}
+            imageAlt={images.equipmentClose.alt}
+            description={
+              <p>
+                Nous ne livrons pas des recommandations théoriques. Chaque mission s'achève par un
+                parc plus fiable, des décisions argumentées et une traçabilité opposable aux audits
+                internes et aux bailleurs.
+              </p>
+            }
+          >
+            <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {whyCimb.slice(0, 4).map((w) => (
+                <li
+                  key={w.title}
+                  className="group rounded-2xl border border-[color:var(--color-line)] bg-white p-5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[var(--shadow-soft)]"
+                >
+                  <span
+                    aria-hidden
+                    className="grid h-9 w-9 place-items-center rounded-xl bg-[color:var(--color-teal-100)] text-[color:var(--color-teal-700)]"
+                  >
+                    <w.icon className="h-4 w-4" />
+                  </span>
+                  <h3 className="mt-4 text-[15px] font-semibold text-[color:var(--color-ink)]">
+                    {w.title}
+                  </h3>
+                  <p className="mt-1.5 text-[13px] leading-relaxed text-[color:var(--color-muted-strong)]">
+                    {w.description}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </ImageFeature>
         </Container>
       </section>
 
       {/* Méthode */}
-      <section id="methode" className="relative bg-[color:var(--color-soft)]">
+      <section id="methode" className="relative">
         <Container className="py-24 md:py-32">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <SectionHeading
@@ -137,6 +175,8 @@ export default function HomePage() {
           </div>
         </Container>
       </section>
+
+      <LogoWall />
 
       {/* Références / secteurs */}
       <section className="relative">
@@ -167,7 +207,11 @@ export default function HomePage() {
           <div className="mt-20 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
             {references.slice(0, 3).map((r, i) => (
               <AnimatedReveal key={r.type} delay={i * 0.05}>
-                <ReferenceCard reference={r} />
+                <ReferenceCard
+                  reference={r}
+                  image={referenceImages[i]}
+                  imageAlt={`Illustration — ${r.type}`}
+                />
               </AnimatedReveal>
             ))}
           </div>

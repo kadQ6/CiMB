@@ -8,6 +8,7 @@ import { CTASection } from "@/components/CTASection";
 import { AnimatedReveal } from "@/components/AnimatedReveal";
 import { buildMetadata } from "@/lib/seo";
 import { portalFeatures } from "@/lib/site-data";
+import { images } from "@/lib/images";
 
 export const metadata: Metadata = buildMetadata({
   title: "Portail client",
@@ -24,6 +25,8 @@ export default function PortailClientPage() {
         title="Votre parc biomédical, piloté par la donnée."
         description="Un espace dédié pour les directions techniques et les responsables biomédicaux : équipements, interventions, indicateurs et rapports — au même endroit, en continu."
         crumbs={[{ label: "Accueil", href: "/" }, { label: "Portail client" }]}
+        image={images.equipmentClose.src}
+        imageAlt={images.equipmentClose.alt}
       />
 
       <section>

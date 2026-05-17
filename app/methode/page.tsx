@@ -3,9 +3,13 @@ import { Container } from "@/components/Container";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
 import { MethodTimeline } from "@/components/MethodTimeline";
+import { ImageFeature } from "@/components/ImageFeature";
 import { CTASection } from "@/components/CTASection";
 import { AnimatedReveal } from "@/components/AnimatedReveal";
+import { ButtonLink } from "@/components/Button";
 import { buildMetadata } from "@/lib/seo";
+import { images } from "@/lib/images";
+import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = buildMetadata({
   title: "Méthode CiMB",
@@ -75,6 +79,8 @@ export default function MethodPage() {
         title="Une démarche structurée, traçable et opposable."
         description="Notre méthode est conçue pour produire des résultats reproductibles : du diagnostic initial au pilotage continu, chaque étape est formalisée et documentée."
         crumbs={[{ label: "Accueil", href: "/" }, { label: "Méthode" }]}
+        image={images.blueprint.src}
+        imageAlt={images.blueprint.alt}
       />
 
       <section>
@@ -123,6 +129,42 @@ export default function MethodPage() {
               </ol>
             </div>
           </div>
+        </Container>
+      </section>
+
+      <section>
+        <Container className="py-24 md:py-32">
+          <ImageFeature
+            eyebrow="Sur le terrain"
+            title="Une méthode pensée pour les contextes africains et multi-sites."
+            image={images.meeting.src}
+            imageAlt={images.meeting.alt}
+            reverse
+            description={
+              <>
+                <p>
+                  Nos missions sont déployées dans des contextes opérationnels exigeants : sites
+                  multiples, contraintes logistiques, pic d'activité hospitalière, calendriers de
+                  bailleurs. La méthode est cadrée pour rester applicable et traçable, quel que soit
+                  le périmètre.
+                </p>
+                <p>
+                  Nous adaptons l'organisation, les outils et le rythme de mission à votre réalité —
+                  sans compromis sur la rigueur du livrable.
+                </p>
+              </>
+            }
+            stats={[
+              { value: "10", label: "Étapes opérationnelles" },
+              { value: "5", label: "Phases-clés" },
+              { value: "100 %", label: "Traçabilité" },
+            ]}
+          >
+            <ButtonLink href="/contact" variant="primary" size="md">
+              Cadrer ma mission
+              <ArrowRight className="h-4 w-4" />
+            </ButtonLink>
+          </ImageFeature>
         </Container>
       </section>
 

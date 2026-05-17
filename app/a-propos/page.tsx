@@ -3,9 +3,12 @@ import { Award, Compass, HeartPulse, Microscope, Target, Users } from "lucide-re
 import { Container } from "@/components/Container";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
+import { ImageFeature } from "@/components/ImageFeature";
+import { LogoWall } from "@/components/LogoWall";
 import { CTASection } from "@/components/CTASection";
 import { AnimatedReveal } from "@/components/AnimatedReveal";
 import { buildMetadata } from "@/lib/seo";
+import { images } from "@/lib/images";
 import { site } from "@/lib/site-data";
 
 export const metadata: Metadata = buildMetadata({
@@ -69,37 +72,39 @@ export default function AboutPage() {
         title="Le centre de référence en ingénierie biomédicale, à Djibouti."
         description="CiMB conjugue ingénierie, maintenance et pédagogie pour rendre les parcs biomédicaux des établissements de santé fiables, conformes et pilotables dans la durée."
         crumbs={[{ label: "Accueil", href: "/" }, { label: "À propos" }]}
+        image={images.about.src}
+        imageAlt={images.about.alt}
       />
 
       <section>
-        <Container className="py-24 md:py-28">
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
-            <div className="lg:col-span-5">
-              <SectionHeading
-                eyebrow="Notre raison d'être"
-                title="Professionnaliser la maintenance biomédicale, structure par structure."
-              />
-            </div>
-            <div className="lg:col-span-7 space-y-5 text-[16px] leading-relaxed text-[color:var(--color-muted-strong)]">
-              <p>
-                Dans la plupart des établissements que nous accompagnons, la maintenance biomédicale
-                souffre des mêmes contraintes : équipements vieillissants, parcs incomplets,
-                interventions non documentées, dépendance forte aux fabricants, absence d'indicateurs
-                consolidés.
-              </p>
-              <p>
-                {site.name} a été conçu pour répondre concrètement à cette réalité, en apportant
-                aux directions techniques une démarche structurée, des outils éprouvés et un
-                accompagnement humain. Nous considérons la maintenance biomédicale comme un levier
-                stratégique de qualité des soins.
-              </p>
-              <p>
-                {site.name} est porté par {site.parent}. Nos équipes interviennent à Djibouti et dans
-                la sous-région, en partenariat avec des hôpitaux publics, des cliniques privées, des
-                centres spécialisés et des bailleurs internationaux.
-              </p>
-            </div>
-          </div>
+        <Container className="py-24 md:py-32">
+          <ImageFeature
+            eyebrow="Notre raison d'être"
+            title="Professionnaliser la maintenance biomédicale, structure par structure."
+            image={images.team.src}
+            imageAlt={images.team.alt}
+            description={
+              <>
+                <p>
+                  Dans la plupart des établissements que nous accompagnons, la maintenance biomédicale
+                  souffre des mêmes contraintes : équipements vieillissants, parcs incomplets,
+                  interventions non documentées, dépendance forte aux fabricants, absence d'indicateurs
+                  consolidés.
+                </p>
+                <p>
+                  {site.name} a été conçu pour répondre concrètement à cette réalité, en apportant
+                  aux directions techniques une démarche structurée, des outils éprouvés et un
+                  accompagnement humain. Nous considérons la maintenance biomédicale comme un levier
+                  stratégique de qualité des soins.
+                </p>
+                <p>
+                  {site.name} est porté par {site.parent}. Nos équipes interviennent à Djibouti et dans
+                  la sous-région, en partenariat avec des hôpitaux publics, des cliniques privées, des
+                  centres spécialisés et des bailleurs internationaux.
+                </p>
+              </>
+            }
+          />
         </Container>
       </section>
 
@@ -236,6 +241,8 @@ export default function AboutPage() {
           </div>
         </Container>
       </section>
+
+      <LogoWall />
 
       <CTASection
         eyebrow="Travailler avec nous"
