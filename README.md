@@ -2,8 +2,9 @@
 
 Site vitrine du **Centre d'Ingénierie et de Maintenance Biomédicale (CiMB)**, porté par **HORNCARE** à Djibouti.
 
-> 📝 **Édition de contenu** → voir [`CONTENT.md`](./CONTENT.md)
-> 🚀 **Publication GitHub + Vercel** → voir [`DEPLOY.md`](./DEPLOY.md)
+> 🛠️ **Modifier le site en autonomie (textes, images, couleurs)** → voir [`GUIDE_PRATIQUE.md`](./GUIDE_PRATIQUE.md) ⭐
+> 📝 **Carte d'édition rapide** → voir [`CONTENT.md`](./CONTENT.md)
+> 🚀 **Publication GitHub + Vercel + domaine** → voir [`DEPLOY.md`](./DEPLOY.md)
 
 ## Stack
 
